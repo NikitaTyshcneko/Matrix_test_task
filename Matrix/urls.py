@@ -23,5 +23,5 @@ api = NinjaAPI()
 api.add_router("matrix", matrix_router)
 
 urlpatterns = [
-    path("api/", api.urls),
+    path("api/v1/", api.urls),
 ]

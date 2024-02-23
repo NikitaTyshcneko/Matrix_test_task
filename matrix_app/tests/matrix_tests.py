@@ -13,7 +13,7 @@ class MatrixTest(TestCase):
     def test_traverse_matrix_api(self):
         matrix = Matrix.objects.create(matrix_data=[[1, 2], [3, 4]])
 
-        response = self.client.get(f"/api/matrix/traverse/{matrix.id}")
+        response = self.client.get(f"/api/v1/matrix/traverse/{matrix.id}")
 
         assert response.status_code == 200
         assert response.json() == traverse_matrix(matrix.matrix_data)
@@ -21,13 +21,13 @@ class MatrixTest(TestCase):
     def test_traverse_matrix_api_with_wrong_id(self):
         matrix = Matrix.objects.create(matrix_data=[[1, 2], [3, 4]])
 
-        response = self.client.get(f"/api/matrix/traverse/{matrix.id+10}")
+        response = self.client.get(f"/api/v1/matrix/traverse/{matrix.id+10}")
 
         assert response.status_code == 404
         assert response.content == b'Matrix does not exist'
 
     def test_add_matrix(self):
-        response = self.client.post("/api/matrix/add")
+        response = self.client.post("/api/v1/matrix/add")
 
         assert response.status_code == 201
         assert Matrix.objects.exists()
