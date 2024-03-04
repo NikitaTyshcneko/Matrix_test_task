@@ -27,6 +27,8 @@ POST api/v1/matrix/add - add new matrix
 
 GET /api/v1/docs/ - Ninja documentation.
 
+GET /admin/ - django admin
+
 **Testing**
 ```
 pytest
