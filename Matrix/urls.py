@@ -17,11 +17,13 @@ Including another URLconf
 from django.urls import path
 from ninja import NinjaAPI
 from matrix_app.views import matrix_router
+from django.contrib import admin
 
 api = NinjaAPI()
 
 api.add_router("matrix", matrix_router)
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path("api/v1/", api.urls),
 ]

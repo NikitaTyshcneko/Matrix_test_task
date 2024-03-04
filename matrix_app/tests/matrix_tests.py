@@ -16,7 +16,7 @@ class MatrixTest(TestCase):
         response = self.client.get(f"/api/v1/matrix/traverse/{matrix.id}")
 
         assert response.status_code == 200
-        assert response.json() == traverse_matrix(matrix.matrix_data)
+        assert response.json() == [[1, 3], [2, 4]]
 
     def test_traverse_matrix_api_with_wrong_id(self):
         matrix = Matrix.objects.create(matrix_data=[[1, 2], [3, 4]])
